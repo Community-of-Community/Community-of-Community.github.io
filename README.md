@@ -18,6 +18,6 @@ GitHub Pages publishes the repository root from `main` (`/`). The entry point is
 
 The folded form sends introductions to `wayneyjin@gmail.com` through FormSubmit, with or without JavaScript. The recipient must activate it using FormSubmit's confirmation email on first use (check spam). If AJAX does not trigger activation, submit once with JavaScript disabled, confirm by email, and then test delivery again. An accepted request does not confirm email delivery. Never submit confidential information.
 
-## Future organization
+## Organization
 
-We plan to transfer both public repositories to `Community-of-Community` and rename this repository to `Community-of-Community.github.io`. At migration, update the website URL, canonical URL, FormSubmit `_next` URL, and main repository links; recheck Pages settings and both repository homepages. GitHub repository redirects do not redirect Pages URLs.
+This repository is `Community-of-Community/Community-of-Community.github.io` and publishes at https://community-of-community.github.io/.
