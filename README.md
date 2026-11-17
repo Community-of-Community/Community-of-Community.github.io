@@ -16,7 +16,7 @@ GitHub Pages publishes the repository root from `main` (`/`). The entry point is
 
 ## Collaboration form
 
-The folded form sends introductions to `wayneyjin@gmail.com` through FormSubmit, with or without JavaScript. The recipient must activate it using FormSubmit's confirmation email on first use (check spam). If AJAX does not trigger activation, submit once with JavaScript disabled, confirm by email, and then test delivery again. An accepted request does not confirm email delivery. Never submit confidential information.
+The folded form uses FormSubmit’s official browser POST + `_next` redirect (no AJAX). The action uses the FormSubmit hash endpoint. If FormSubmit activation cannot be completed, use **Open in email app** on the page (mailto fallback) or email `wayneyjin@gmail.com` directly. Never submit confidential information.
 
 ## Organization
 

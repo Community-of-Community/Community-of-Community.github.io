@@ -92,12 +92,13 @@ const translations = {
     "form.wechat": "WeChat",
     "form.optional": "(optional)",
     "form.notes": "Additional notes",
-    "form.privacy": "Submitting sends these details to CoC via FormSubmit. Please share only information you have permission to share, and do not include confidential material.",
+    "form.privacy": "Submit uses FormSubmit’s official redirect flow: after sending, you return to this page. Please share only information you have permission to share.",
     "form.submit": "Send introduction",
-    "form.sending": "Sending introduction…",
-    "form.success": "Your introduction has been accepted for processing. Thank you for connecting with CoC.",
-    "form.pending": "This form still needs email activation. Your entries are preserved; please contact wayneyjin@gmail.com directly for now.",
-    "form.error": "We could not confirm your submission. Your entries are preserved. Please retry or email wayneyjin@gmail.com; avoid repeated retries if delivery is uncertain.",
+    "form.mailto": "Open in email app",
+    "form.sending": "Redirecting to FormSubmit…",
+    "form.success": "Thank you — your introduction was received.",
+    "form.pending": "FormSubmit still needs activation. Use “Open in email app”, or email wayneyjin@gmail.com directly.",
+    "form.error": "Submission could not be completed here. Use “Open in email app” or email wayneyjin@gmail.com.",
     "form.invalid": "Please complete all required fields and provide a valid contact email.",
     "form.fieldRequired": "Please complete this field with more than spaces.",
     "footer.note": "Public benefit. Independent communities. Respect for boundaries.",
@@ -193,12 +194,13 @@ const translations = {
     "form.wechat": "微信",
     "form.optional": "（选填）",
     "form.notes": "备注",
-    "form.privacy": "提交后，以上信息将通过 FormSubmit 发送给 CoC。请仅提供您有权分享的信息，请勿包含机密材料。",
+    "form.privacy": "提交采用 FormSubmit 官方回跳方式：发送后返回本页。请仅提供您有权分享的信息。",
     "form.submit": "提交合作介绍",
-    "form.sending": "正在提交介绍……",
-    "form.success": "您的介绍已被接受处理。感谢您与 CoC 建立联系。",
-    "form.pending": "表单尚待完成邮箱激活。已保留您填写的内容，请暂时直接联系 wayneyjin@gmail.com。",
-    "form.error": "暂时无法确认提交结果，已保留您填写的内容。请重试或发送邮件至 wayneyjin@gmail.com；如收件情况不确定，请避免反复提交。",
+    "form.mailto": "用邮箱客户端发送",
+    "form.sending": "正在跳转到 FormSubmit……",
+    "form.success": "感谢提交，我们已收到您的介绍。",
+    "form.pending": "FormSubmit 仍需完成激活。请改用「用邮箱客户端发送」，或直接发信至 wayneyjin@gmail.com。",
+    "form.error": "此处提交未能完成。请改用「用邮箱客户端发送」，或发信至 wayneyjin@gmail.com。",
     "form.invalid": "请完整填写必填项，并提供有效的联系邮箱。",
     "form.fieldRequired": "请填写此项，内容不能仅为空格。",
     "footer.note": "坚持公益协作，保持社区独立，尊重参与边界。",
@@ -324,6 +326,26 @@ window.addEventListener("hashchange", () => {
   }
 });
 
+function buildMailtoHref() {
+  const value = (name) => (form.elements.namedItem(name)?.value || "").trim();
+  const body = [
+    `Name: ${value("name")}`,
+    `Community / project: ${value("community")}`,
+    "",
+    "What I can offer:",
+    value("offer"),
+    "",
+    "What I am looking for:",
+    value("seeking"),
+    "",
+    `Contact email: ${value("email")}`,
+    value("wechat") ? `WeChat: ${value("wechat")}` : "",
+    value("notes") ? `Notes: ${value("notes")}` : ""
+  ].filter(Boolean).join("\n");
+
+  return `mailto:wayneyjin@gmail.com?subject=${encodeURIComponent("CoC — Collaboration Intro")}&body=${encodeURIComponent(body)}`;
+}
+
 form.addEventListener("invalid", (event) => {
   event.target.setAttribute("aria-invalid", "true");
   setFormState("invalid");
@@ -336,10 +358,32 @@ form.addEventListener("input", (event) => {
   if (["invalid", "success"].includes(formState)) setFormState("idle");
 });
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  if (formState === "sending") return;
+// Official FormSubmit return-style: native POST, then _next redirect back to the site.
+form.addEventListener("submit", (event) => {
+  if (formState === "sending") {
+    event.preventDefault();
+    return;
+  }
 
+  form.querySelectorAll("[required]").forEach((field) => {
+    field.setCustomValidity(field.value.trim() ? "" : translate("form.fieldRequired"));
+  });
+
+  if (!form.reportValidity()) {
+    event.preventDefault();
+    setFormState("invalid");
+    return;
+  }
+
+  if (form.elements.namedItem("_honey").value) {
+    event.preventDefault();
+    return;
+  }
+
+  setFormState("sending");
+});
+
+document.getElementById("mailto-fallback")?.addEventListener("click", () => {
   form.querySelectorAll("[required]").forEach((field) => {
     field.setCustomValidity(field.value.trim() ? "" : translate("form.fieldRequired"));
   });
@@ -349,42 +393,5 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  if (form.elements.namedItem("_honey").value) return;
-
-  const introduction = Object.fromEntries(new FormData(form).entries());
-  const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), FORM_TIMEOUT_MS);
-  const editableFields = form.querySelectorAll(".form-field input, .form-field textarea");
-  editableFields.forEach((field) => { field.readOnly = true; });
-  setFormState("sending");
-
-  try {
-    const endpoint = new URL(form.action);
-    endpoint.pathname = `/ajax${endpoint.pathname}`;
-    const response = await fetch(endpoint.href, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(introduction),
-      credentials: "omit",
-      signal: controller.signal
-    });
-    const result = await response.json();
-
-    if (/activat|confirm.*email|check.*email/i.test(String(result.message || ""))) {
-      setFormState("pending");
-    } else if (response.ok && [true, "true"].includes(result.success)) {
-      form.reset();
-      form.querySelectorAll('[aria-invalid="true"]').forEach((field) => field.removeAttribute("aria-invalid"));
-      setFormState("success");
-    } else {
-      throw new Error("Submission was not accepted");
-    }
-  } catch {
-    setFormState("error");
-  } finally {
-    window.clearTimeout(timeout);
-    editableFields.forEach((field) => { field.readOnly = false; });
-    renderFormState();
-    statusMessage.focus({ preventScroll: true });
-  }
+  window.location.href = buildMailtoHref();
 });

@@ -154,7 +154,10 @@ h2 { margin-top: 13px; font-family: var(--serif); font-size: clamp(28px, 3vw, 38
 .form-field [aria-invalid="true"] { border-color: #a34d34; }
 .form-field input::placeholder, .form-field textarea::placeholder { color: #73786a; opacity: 1; }
 .form-privacy { color: var(--muted); font-size: 11px; line-height: 1.8; }
-.submit-button { width: 100%; margin-top: 20px; }
+.form-actions { display: grid; gap: 10px; margin-top: 20px; }
+.submit-button { width: 100%; }
+.button-light { background: #fffaf0; color: var(--ink); border-color: #cbd3c2; }
+.button-light:hover:not(:disabled) { background: #eef4e8; transform: translateY(-1px); }
 .form-status { font-size: 12px; overflow-wrap: anywhere; }
 .form-status:not(:empty) { margin-top: 16px; padding: 12px; border-radius: 5px; background: #e6efe2; color: #2c624f; }
 .form-status[data-state="error"], .form-status[data-state="invalid"], .form-status[data-state="pending"] { background: #fae8dc; color: #85412d; }

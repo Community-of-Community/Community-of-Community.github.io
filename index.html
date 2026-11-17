@@ -161,6 +161,7 @@
               <div class="form-heading"><p data-i18n="form.required">* Required fields</p></div>
               <input type="hidden" name="_subject" value="CoC — Collaboration Intro">
               <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="https://community-of-community.github.io/?submitted=1#collaboration-form">
               <div class="honeypot" aria-hidden="true"><label for="form-honey">Leave this field empty</label><input type="text" id="form-honey" name="_honey" tabindex="-1" autocomplete="off"></div>
               <div class="form-row">
@@ -174,10 +175,13 @@
                 <div class="form-field"><label for="intro-wechat"><span data-i18n="form.wechat">WeChat</span> <span class="optional" data-i18n="form.optional">(optional)</span></label><input id="intro-wechat" name="wechat" maxlength="120" autocomplete="off"></div>
               </div>
               <div class="form-field"><label for="intro-notes"><span data-i18n="form.notes">Additional notes</span> <span class="optional" data-i18n="form.optional">(optional)</span></label><textarea id="intro-notes" name="notes" maxlength="3000" rows="2"></textarea></div>
-              <p class="form-privacy" id="form-privacy" data-i18n="form.privacy">Submitting sends these details to CoC via FormSubmit. Please share only information you have permission to share, and do not include confidential material.</p>
-              <button class="button button-dark submit-button" type="submit"><span data-i18n="form.submit" id="submit-label">Send introduction</span><span aria-hidden="true">↗</span></button>
+              <p class="form-privacy" id="form-privacy" data-i18n="form.privacy">Submit uses FormSubmit’s official redirect flow: after sending, you return to this page. Please share only information you have permission to share.</p>
+              <div class="form-actions">
+                <button class="button button-dark submit-button" type="submit"><span data-i18n="form.submit" id="submit-label">Send introduction</span><span aria-hidden="true">↗</span></button>
+                <button class="button button-light" type="button" id="mailto-fallback" data-i18n="form.mailto">Open in email app</button>
+              </div>
               <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
-              <noscript><p class="form-privacy">You can submit without JavaScript. FormSubmit will open a confirmation or thank-you page.</p></noscript>
+              <noscript><p class="form-privacy">Without JavaScript, the form still posts to FormSubmit and returns via _next.</p></noscript>
             </form>
           </details>
         </div>
