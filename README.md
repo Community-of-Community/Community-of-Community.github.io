@@ -2,11 +2,11 @@
 
 **Make friends and Shared possibilities.**
 
-This public repository hosts the bilingual project website for Community of Community (CoC). The introduction, founding members, community Issues, and Discussions live in the [main repository](https://github.com/WayneJin0918/Community-of-Community).
+This public repository hosts the bilingual project website for Community of Community (CoC). The introduction, founding members, community Issues, and Discussions live in the [main repository](https://github.com/Community-of-Community/Community-of-Community).
 
-- **Website:** https://waynejin0918.github.io/Community-of-Community-Website/
-- **Issues:** https://github.com/WayneJin0918/Community-of-Community/issues
-- **Discussions:** https://github.com/WayneJin0918/Community-of-Community/discussions
+- **Website:** https://community-of-community.github.io/
+- **Issues:** https://github.com/Community-of-Community/Community-of-Community/issues
+- **Discussions:** https://github.com/Community-of-Community/Community-of-Community/discussions
 
 ## Preview and deployment
 
