@@ -1,211 +1,107 @@
-const WECHAT_ID = "on request";
 const LANGUAGE_STORAGE_KEY = "coc-language";
-const FORM_TIMEOUT_MS = 20000;
 
 const translations = {
   en: {
     "page.title": "Community of Community — Make friends and Shared possibilities.",
-    "page.description": "Community of Community (CoC) is a public-benefit, non-commercial space connecting independent communities through shared learning and collaboration.",
+    "page.description": "A public-benefit, non-commercial gathering place for independent communities. Make friends and Shared possibilities.",
     skip: "Skip to content",
     "nav.label": "Main navigation",
-    "nav.scope": "Our scope",
-    "nav.members": "Founding Members",
-    "nav.contact": "Get involved ↗",
+    "nav.contact": "Say hello ↗",
     "language.label": "Language",
-    "hero.eyebrow": "By communities, for communities",
-    "hero.titleOne": "Make friends",
-    "hero.titleTwo": "and Shared possibilities.",
-    "hero.description": "A public-benefit, non-commercial space for community founders, organizers, and builders to connect, share experience, and create something meaningful together.",
-    "hero.action": "Introduce your community",
-    "hero.discussions": "Join the conversation",
-    "hero.note": "Create space. Build connections.",
-    "hero.visualLabel": "A shared space, not a single community",
-    "hero.imageAlt": "Independent communities connected around a shared campfire",
-    "hero.caption": "Different communities. A common ground.",
-    "principles.summary": "We connect communities. We do not replace them.",
-    "principles.label": "Principles",
-    "principles.benefit": "Public benefit",
-    "principles.independence": "Independent by design",
-    "principles.consent": "Participation by choice",
-    "scope.eyebrow": "Purpose & boundaries",
-    "scope.title": "Clear purpose. Room to collaborate.",
-    "scope.intro": "Less duplicated effort. More thoughtful connections. Practical ways to support one another, with each community's autonomy intact.",
-    "scope.inLabel": "In scope",
-    "scope.inTitle": "Connections that serve communities.",
-    "scope.inOne": "Founder and organizer exchanges; shared learning.",
-    "scope.inTwo": "Consent-based introductions and knowledge or resource sharing.",
-    "scope.inThree": "Small joint initiatives, mutual support, and opportunities for young builders.",
-    "scope.outLabel": "Out of scope",
-    "scope.outTitle": "Not a replacement. Not a broker.",
-    "scope.outOne": "Running, absorbing, or speaking on behalf of member communities.",
-    "scope.outTwo": "Commercial brokerage, paid lead generation, or selling member access.",
-    "scope.outThree": "Mandatory commitments, guaranteed funding or reach, or sharing private materials without permission.",
-    "approach.eyebrow": "How we collaborate",
-    "approach.title": "Start small. Learn together.",
-    "approach.intro": "An early-stage, relationship-led start. Begin with trusted introductions, welcome new perspectives, and build confidence through useful work.",
-    "approach.oneTitle": "Introduce your work",
-    "approach.oneBody": "Share your community, what you can offer, and what you are looking for.",
-    "approach.twoTitle": "Find common ground",
-    "approach.twoBody": "Explore a relevant connection. Participation is always a choice, never an obligation.",
-    "approach.threeTitle": "Agree on one initiative",
-    "approach.threeBody": "Clarify roles, time commitments, attribution, and what may be shared before starting.",
-    "approach.fourTitle": "Learn and share back",
-    "approach.fourBody": "Reflect together. Share useful experience with permission, then consider the next step.",
-    "goals.eyebrow": "Looking ahead",
-    "goals.title": "Three directions. One shared purpose.",
-    "goals.intro": "Support the people who build communities. These are directions we are working toward, not promises of outcomes already delivered.",
-    "goals.oneTitle": "Connect founders",
-    "goals.oneBody": "Help early-stage community founders exchange experience, receive feedback, and discover collaboration opportunities.",
-    "goals.oneTag": "Experience → shared learning",
-    "goals.twoTitle": "Amplify with experienced partners",
-    "goals.twoBody": "Invite established community partners to share knowledge and extend the reach of worthwhile, public-benefit work.",
-    "goals.twoTag": "Experience → wider impact",
-    "goals.threeTitle": "Support young builders",
-    "goals.threeBody": "Offer emerging builders meaningful roles, mentorship, and opportunities to develop work and visibility through real collaboration.",
-    "goals.threeTag": "Opportunity → lasting capability",
-    "members.eyebrow": "Creating the space together",
+    "hero.eyebrow": "A little hello. A whole new world.",
+    "hero.description": "A public-benefit, non-commercial gathering place for independent communities.",
+    "hero.action": "Come sit with us",
+    "hero.hello": "hello, friend!",
+    "hero.imageAlt": "Little friends share a campfire, surrounded by teal and coral community houses",
+    "hero.caption": "Different homes. One warm fire.",
+    "story.title": "Good things start with friends.",
+    "story.waveAlt": "Six cheerful little friends waving hello",
+    "story.circleAlt": "Three friends hold hands in a circle",
+    "story.homesAlt": "Independent community houses connected around a shared fire, the CoC logo",
+    "story.oneTitle": "Say hello.",
+    "story.oneBody": "Bring your own little world.",
+    "story.twoTitle": "Share a spark.",
+    "story.twoBody": "A story, a skill, an idea.",
+    "story.threeTitle": "Make room.",
+    "story.threeBody": "Your community stays yours.",
+    "members.eyebrow": "The first friends around the fire",
     "members.title": "Founding Members",
-    "members.intro": "Our Founding Members help create this space for public-benefit collaboration. Each remains independent; cooperation begins with mutually agreed initiatives.",
-    "contact.eyebrow": "Get involved",
-    "contact.title": "A connection starts with an introduction.",
-    "contact.intro": "Tell us what you are building, what you can share, and where a connection could help. A thoughtful starting point is enough.",
-    "contact.issues": "Propose a collaboration",
-    "contact.discussions": "Explore an idea together",
-    "contact.email": "Contact by email",
-    "contact.wechat": "WeChat available on request",
-    "contact.wechatId": "WeChat: {id}",
-    "contact.boundary": "GitHub Issues and Discussions are public. Prefer email or this form for personal contact details.",
-    "form.title": "Collaboration Intro",
-    "form.summaryKicker": "Email introduction",
-    "form.summaryTitle": "Collaboration Intro",
-    "form.summaryHint": "Open the form to share what you build and what you are looking for. It reaches wayneyjin@gmail.com.",
-    "form.summaryOpen": "Open form",
-    "form.summaryClose": "Close",
+    "members.note": "Independent homes. Shared possibilities.",
+    "contact.eyebrow": "There’s a seat for you, too",
+    "contact.title": "Come say hello.",
+    "contact.email": "Email ↗",
+    "contact.boundary": "GitHub is public. For personal details, use email or the form.",
+    "form.summaryKicker": "Prefer a little note?",
+    "form.summaryTitle": "Introduce your community",
     "form.required": "* Required fields",
-    "form.name": "Name / preferred name",
-    "form.community": "Community or project",
-    "form.offer": "What can you offer?",
-    "form.offerPlaceholder": "Experience, knowledge, resources, or a shared initiative…",
+    "form.name": "Your name",
+    "form.community": "Community / project",
+    "form.offer": "What can you share?",
+    "form.offerPlaceholder": "A skill, a story, an idea…",
     "form.seeking": "What are you looking for?",
-    "form.seekingPlaceholder": "A conversation, feedback, collaborators, or support…",
+    "form.seekingPlaceholder": "Friends, feedback, collaborators…",
     "form.email": "Contact email",
-    "form.wechat": "WeChat",
-    "form.optional": "(optional)",
-    "form.notes": "Additional notes",
-    "form.privacy": "Submit uses FormSubmit’s official redirect flow: after sending, you return to this page. Please share only information you have permission to share.",
-    "form.submit": "Send introduction",
-    "form.mailto": "Open in email app",
-    "form.sending": "Redirecting to FormSubmit…",
-    "form.success": "Thank you — your introduction was received.",
-    "form.pending": "FormSubmit still needs activation. Use “Open in email app”, or email wayneyjin@gmail.com directly.",
-    "form.error": "Submission could not be completed here. Use “Open in email app” or email wayneyjin@gmail.com.",
-    "form.invalid": "Please complete all required fields and provide a valid contact email.",
-    "form.fieldRequired": "Please complete this field with more than spaces.",
-    "footer.note": "Public benefit. Independent communities. Respect for boundaries.",
-    "footer.links": "Community links",
-    "footer.contact": "Contact ↗"
+    "form.wechat": "WeChat (optional)",
+    "form.notes": "Anything else? (optional)",
+    "form.privacy": "Delivered via FormSubmit to wayneyjin@gmail.com. Please don’t send confidential information.",
+    "form.submit": "Send your hello",
+    "form.mailto": "Use email app",
+    "form.sending": "Opening FormSubmit…",
+    "form.success": "Thanks for saying hello!",
+    "form.invalid": "Please complete the required fields and use a valid email.",
+    "form.fieldRequired": "Please fill in this field; spaces alone won’t do.",
+    "footer.note": "Little communities. A little closer."
   },
   zh: {
-    "page.title": "Community of Community — 结交朋友，共享可能。",
-    "page.description": "Community of Community（CoC）是公益性质、非商业的社区协作空间，支持独立社区之间的交流、共同学习与合作。",
-    skip: "跳转至主要内容",
+    "page.title": "Community of Community — Make friends and Shared possibilities.",
+    "page.description": "独立社区的公益、非商业相聚空间。Make friends and Shared possibilities.",
+    skip: "跳到主要内容",
     "nav.label": "主导航",
-    "nav.scope": "协作范围",
-    "nav.members": "创始成员",
-    "nav.contact": "参与协作 ↗",
-    "language.label": "语言切换",
-    "hero.eyebrow": "由社区共同参与，服务社区",
-    "hero.titleOne": "结交朋友，",
-    "hero.titleTwo": "共享可能。",
-    "hero.description": "一个公益性质、非商业的协作空间，为社区创始人、组织者与建设者创造连接，支持经验交流与有共同价值的合作。",
-    "hero.action": "介绍您的社区",
-    "hero.discussions": "参与交流讨论",
-    "hero.note": "为交流创造空间，为合作建立连接。",
-    "hero.visualLabel": "共同的协作空间，而非单一社区",
-    "hero.imageAlt": "独立社区围绕共同篝火建立连接",
-    "hero.caption": "各自独立的社区，共同交流的空间。",
-    "principles.summary": "我们连接社区，不替代各社区自身。",
-    "principles.label": "协作原则",
-    "principles.benefit": "公益协作",
-    "principles.independence": "保持独立",
-    "principles.consent": "自愿参与",
-    "scope.eyebrow": "使命与边界",
-    "scope.title": "明确协作方向，尊重各方边界。",
-    "scope.intro": "减少重复探索，促进有意义的连接，推动切实的相互支持，同时尊重各社区的自主权。",
-    "scope.inLabel": "参与范围 / In scope",
-    "scope.inTitle": "服务社区的连接与合作。",
-    "scope.inOne": "社区创始人与组织者交流、共同学习。",
-    "scope.inTwo": "经当事方同意的介绍、知识与资源分享。",
-    "scope.inThree": "小规模共同项目、相互支持与年轻建设者的发展机会。",
-    "scope.outLabel": "不参与范围 / Out of scope",
-    "scope.outTitle": "不替代社区，不从事商业中介。",
-    "scope.outOne": "代管、整合成员社区，或代表成员社区发言。",
-    "scope.outTwo": "商业撮合、付费获客，或出售成员联系渠道。",
-    "scope.outThree": "强制参与、承诺资金或传播效果，或未经许可分享非公开材料。",
-    "approach.eyebrow": "如何协作",
-    "approach.title": "从具体协作起步，共同积累经验。",
-    "approach.intro": "目前处于以信任关系为基础的起步阶段。从相互介绍开始，欢迎新的视角，通过切实有益的协作逐步建立信任。",
-    "approach.oneTitle": "介绍正在开展的工作",
-    "approach.oneBody": "说明社区或项目、能够提供的支持，以及希望寻求的合作。",
-    "approach.twoTitle": "寻找共同关注点",
-    "approach.twoBody": "探索合适的连接。参与始终出于自主选择，不构成义务。",
-    "approach.threeTitle": "明确一次具体协作",
-    "approach.threeBody": "在开始前约定角色、时间投入、署名方式与可公开范围。",
-    "approach.fourTitle": "共同复盘与分享",
-    "approach.fourBody": "总结经验，在获得同意后分享有益成果，再考虑下一步协作。",
-    "goals.eyebrow": "未来目标",
-    "goals.title": "三个方向，共同服务社区建设。",
-    "goals.intro": "为社区建设者提供支持。这些是持续推进的方向，并非已经兑现的成果承诺。",
-    "goals.oneTitle": "促进创始人交流",
-    "goals.oneBody": "支持初期社区创始人分享经验、获得反馈，并发现合作机会。",
-    "goals.oneTag": "经验交流 → 共同学习",
-    "goals.twoTitle": "携手资深社区伙伴",
-    "goals.twoBody": "邀请有经验的社区伙伴贡献知识，扩大有价值的公益协作的影响力。",
-    "goals.twoTag": "经验支持 → 扩大影响",
-    "goals.threeTitle": "支持年轻建设者",
-    "goals.threeBody": "提供真实协作角色、经验指导与成果展示机会，帮助年轻建设者积累能力与作品。",
-    "goals.threeTag": "实践机会 → 持续成长",
-    "members.eyebrow": "共同创造协作空间",
-    "members.title": "Founding Members / 创始成员",
-    "members.intro": "创始成员共同支持公益协作，为各社区创造连接与合作空间。各方保持独立，从经共同确认的具体事项开始合作。",
-    "contact.eyebrow": "参与协作",
-    "contact.title": "从一份介绍，建立新的连接。",
-    "contact.intro": "欢迎说明正在开展的工作、能够分享的经验与资源，以及希望获得的支持。清晰的介绍，是合作的起点。",
-    "contact.issues": "提出具体合作建议",
-    "contact.discussions": "交流想法与共同关注点",
-    "contact.email": "通过邮箱联系",
-    "contact.wechat": "微信联系方式可按需提供。",
-    "contact.wechatId": "微信：{id}",
-    "contact.boundary": "GitHub Issues 与 Discussions 为公开内容。个人联系方式请优先通过邮箱或本表单提供。",
-    "form.title": "合作介绍 / Collaboration Intro",
-    "form.summaryKicker": "邮件介绍",
-    "form.summaryTitle": "合作介绍",
-    "form.summaryHint": "点开表单，介绍你在做的事与希望寻求的连接。提交后将发送至 wayneyjin@gmail.com。",
-    "form.summaryOpen": "打开表单",
-    "form.summaryClose": "收起",
+    "nav.contact": "打个招呼 ↗",
+    "language.label": "语言",
+    "hero.eyebrow": "一声你好，一个新世界。",
+    "hero.description": "独立社区的公益、非商业相聚空间。",
+    "hero.action": "来，一起围炉坐坐",
+    "hero.hello": "你好呀，朋友！",
+    "hero.imageAlt": "小伙伴围炉而坐，周围是青绿与珊瑚色的社区小房子",
+    "hero.caption": "各有小家，共享温暖。",
+    "story.title": "好事情，从交朋友开始。",
+    "story.waveAlt": "六位可爱的小伙伴挥手打招呼",
+    "story.circleAlt": "三位朋友手拉手围成一圈",
+    "story.homesAlt": "独立社区的小房子围绕篝火相连，组成 CoC 标志",
+    "story.oneTitle": "打个招呼。",
+    "story.oneBody": "带上你的小小世界。",
+    "story.twoTitle": "分享火花。",
+    "story.twoBody": "一个故事，一项技能，一个点子。",
+    "story.threeTitle": "留个位置。",
+    "story.threeBody": "你的社区，依然是你的。",
+    "members.eyebrow": "最先围炉而坐的朋友们",
+    "members.title": "创始成员",
+    "members.note": "各自独立，一起探索可能。",
+    "contact.eyebrow": "也为你留了一个位置",
+    "contact.title": "来打个招呼吧。",
+    "contact.email": "联系邮箱 ↗",
+    "contact.boundary": "GitHub 内容公开；个人联系方式请用邮件或表单。",
+    "form.summaryKicker": "想留个小纸条？",
+    "form.summaryTitle": "介绍一下你的社区",
     "form.required": "* 为必填项",
-    "form.name": "姓名 / 称呼",
-    "form.community": "社区或项目",
-    "form.offer": "能够提供的支持",
-    "form.offerPlaceholder": "经验、知识、资源，或希望共同推进的事项……",
-    "form.seeking": "希望寻求的合作或支持",
-    "form.seekingPlaceholder": "交流、反馈、合作伙伴，或其他支持……",
+    "form.name": "你的称呼",
+    "form.community": "社区 / 项目",
+    "form.offer": "你想分享什么？",
+    "form.offerPlaceholder": "一项技能，一个故事，一个点子……",
+    "form.seeking": "你在寻找什么？",
+    "form.seekingPlaceholder": "朋友、建议、协作伙伴……",
     "form.email": "联系邮箱",
-    "form.wechat": "微信",
-    "form.optional": "（选填）",
-    "form.notes": "备注",
-    "form.privacy": "提交采用 FormSubmit 官方回跳方式：发送后返回本页。请仅提供您有权分享的信息。",
-    "form.submit": "提交合作介绍",
+    "form.wechat": "微信（选填）",
+    "form.notes": "还有什么想说的？（选填）",
+    "form.privacy": "通过 FormSubmit 发送至 wayneyjin@gmail.com，请勿填写机密信息。",
+    "form.submit": "送出这声你好",
     "form.mailto": "用邮箱客户端发送",
-    "form.sending": "正在跳转到 FormSubmit……",
-    "form.success": "感谢提交，我们已收到您的介绍。",
-    "form.pending": "FormSubmit 仍需完成激活。请改用「用邮箱客户端发送」，或直接发信至 wayneyjin@gmail.com。",
-    "form.error": "此处提交未能完成。请改用「用邮箱客户端发送」，或发信至 wayneyjin@gmail.com。",
-    "form.invalid": "请完整填写必填项，并提供有效的联系邮箱。",
-    "form.fieldRequired": "请填写此项，内容不能仅为空格。",
-    "footer.note": "坚持公益协作，保持社区独立，尊重参与边界。",
-    "footer.links": "社区联系入口",
-    "footer.contact": "联系邮箱 ↗"
+    "form.sending": "正在打开 FormSubmit……",
+    "form.success": "谢谢你的这声你好！",
+    "form.invalid": "请填写必填项，并提供有效邮箱。",
+    "form.fieldRequired": "请填写此项，不能只有空格。",
+    "footer.note": "小小的社区，更近了一点。"
   }
 };
 
@@ -216,16 +112,6 @@ const submitButton = form.querySelector('button[type="submit"]');
 const submitLabel = document.getElementById("submit-label");
 let currentLanguage = "en";
 let formState = "idle";
-
-function openCollaborationForm({ focusFirstField = false } = {}) {
-  if (!formPanel) return;
-  formPanel.open = true;
-  if (focusFirstField) {
-    window.requestAnimationFrame(() => {
-      document.getElementById("intro-name")?.focus({ preventScroll: true });
-    });
-  }
-}
 
 function translate(key) {
   return translations[currentLanguage][key] ?? translations.en[key] ?? key;
@@ -245,41 +131,35 @@ function setFormState(state) {
   renderFormState();
 }
 
+function openCollaborationForm({ focusFirstField = false } = {}) {
+  formPanel.open = true;
+  if (focusFirstField) {
+    window.requestAnimationFrame(() => document.getElementById("intro-name").focus({ preventScroll: true }));
+  }
+}
+
 function applyLanguage(language) {
   currentLanguage = Object.hasOwn(translations, language) ? language : "en";
   document.documentElement.lang = currentLanguage === "zh" ? "zh-CN" : "en";
   document.title = translate("page.title");
   document.querySelector('meta[name="description"]').content = translate("page.description");
-
   const translatedAttributes = {
     "data-i18n": "textContent",
     "data-i18n-placeholder": "placeholder",
     "data-i18n-alt": "alt",
     "data-i18n-aria": "aria-label"
   };
-
   Object.entries(translatedAttributes).forEach(([dataAttribute, targetAttribute]) => {
     document.querySelectorAll(`[${dataAttribute}]`).forEach((element) => {
       const text = translate(element.getAttribute(dataAttribute));
-      if (targetAttribute === "textContent") {
-        element.textContent = text;
-      } else {
-        element.setAttribute(targetAttribute, text);
-      }
+      if (targetAttribute === "textContent") element.textContent = text;
+      else element.setAttribute(targetAttribute, text);
     });
   });
-
   document.querySelectorAll("[data-language]").forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.language === currentLanguage));
   });
-
-  if (WECHAT_ID && !["TBD", "on request"].includes(WECHAT_ID)) {
-    document.querySelector("[data-wechat]").textContent = translate("contact.wechatId").replace("{id}", WECHAT_ID);
-  }
-
-  form.querySelectorAll("[required]").forEach((field) => {
-    field.setCustomValidity("");
-  });
+  form.querySelectorAll("[required]").forEach((field) => field.setCustomValidity(""));
   renderFormState();
 }
 
@@ -289,7 +169,6 @@ try {
 } catch {}
 applyLanguage(savedLanguage);
 document.querySelector(".language-switch").hidden = false;
-
 document.querySelectorAll("[data-language]").forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.language);
@@ -308,9 +187,9 @@ if (["http:", "https:"].includes(window.location.protocol)) {
 }
 
 const returnUrl = new URL(window.location.href);
-const shouldOpenForm = returnUrl.searchParams.get("submitted") === "1" || returnUrl.hash === "#collaboration-form";
-if (shouldOpenForm) openCollaborationForm({ focusFirstField: returnUrl.hash === "#collaboration-form" });
-
+if (returnUrl.searchParams.get("submitted") === "1" || returnUrl.hash === "#collaboration-form") {
+  openCollaborationForm({ focusFirstField: returnUrl.hash === "#collaboration-form" });
+}
 if (returnUrl.searchParams.get("submitted") === "1") {
   setFormState("success");
   returnUrl.searchParams.delete("submitted");
@@ -319,79 +198,48 @@ if (returnUrl.searchParams.get("submitted") === "1") {
     window.history.replaceState(null, "", returnUrl.href);
   } catch {}
 }
-
 window.addEventListener("hashchange", () => {
-  if (window.location.hash === "#collaboration-form") {
-    openCollaborationForm({ focusFirstField: true });
-  }
+  if (window.location.hash === "#collaboration-form") openCollaborationForm({ focusFirstField: true });
 });
 
 function buildMailtoHref() {
   const value = (name) => (form.elements.namedItem(name)?.value || "").trim();
   const body = [
-    `Name: ${value("name")}`,
-    `Community / project: ${value("community")}`,
-    "",
-    "What I can offer:",
-    value("offer"),
-    "",
-    "What I am looking for:",
-    value("seeking"),
-    "",
+    `Name: ${value("name")}`, `Community / project: ${value("community")}`, "",
+    "What I can offer:", value("offer"), "", "What I am looking for:", value("seeking"), "",
     `Contact email: ${value("email")}`,
     value("wechat") ? `WeChat: ${value("wechat")}` : "",
     value("notes") ? `Notes: ${value("notes")}` : ""
   ].filter(Boolean).join("\n");
-
   return `mailto:wayneyjin@gmail.com?subject=${encodeURIComponent("CoC — Collaboration Intro")}&body=${encodeURIComponent(body)}`;
+}
+
+function validateIntroduction() {
+  form.querySelectorAll("[required]").forEach((field) => {
+    field.setCustomValidity(field.value.trim() ? "" : translate("form.fieldRequired"));
+  });
+  if (form.reportValidity()) return true;
+  setFormState("invalid");
+  return false;
 }
 
 form.addEventListener("invalid", (event) => {
   event.target.setAttribute("aria-invalid", "true");
   setFormState("invalid");
 }, true);
-
 form.addEventListener("input", (event) => {
   if (!(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) return;
   event.target.setCustomValidity("");
   event.target.removeAttribute("aria-invalid");
   if (["invalid", "success"].includes(formState)) setFormState("idle");
 });
-
-// Official FormSubmit return-style: native POST, then _next redirect back to the site.
 form.addEventListener("submit", (event) => {
-  if (formState === "sending") {
+  if (formState === "sending" || !validateIntroduction() || form.elements.namedItem("_honey").value) {
     event.preventDefault();
     return;
   }
-
-  form.querySelectorAll("[required]").forEach((field) => {
-    field.setCustomValidity(field.value.trim() ? "" : translate("form.fieldRequired"));
-  });
-
-  if (!form.reportValidity()) {
-    event.preventDefault();
-    setFormState("invalid");
-    return;
-  }
-
-  if (form.elements.namedItem("_honey").value) {
-    event.preventDefault();
-    return;
-  }
-
   setFormState("sending");
 });
-
-document.getElementById("mailto-fallback")?.addEventListener("click", () => {
-  form.querySelectorAll("[required]").forEach((field) => {
-    field.setCustomValidity(field.value.trim() ? "" : translate("form.fieldRequired"));
-  });
-
-  if (!form.reportValidity()) {
-    setFormState("invalid");
-    return;
-  }
-
-  window.location.href = buildMailtoHref();
+document.getElementById("mailto-fallback").addEventListener("click", () => {
+  if (validateIntroduction()) window.location.href = buildMailtoHref();
 });
