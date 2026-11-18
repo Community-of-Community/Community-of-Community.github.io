@@ -2,11 +2,11 @@
 
 **Make friends and Shared possibilities.**
 
-This public repository hosts the illustration-led, bilingual website for Community of Community (CoC): little friends, independent community homes, and one shared campfire. English is the default; the language switch remembers a visitor's choice. The founding members, community Issues, and Discussions live in the [main repository](https://github.com/Community-of-Community/Community-of-Community).
+This public repository hosts the illustration-led, bilingual website for Community of Community (CoC): little friends, independent community homes, and one shared campfire. English is the default; the language switch remembers a visitor's choice. The founding members, community Issues, and Discussions live in the [main repository](https://github.com/Community-of-Community/CoC).
 
 - **Website:** https://community-of-community.github.io/
-- **Issues:** https://github.com/Community-of-Community/Community-of-Community/issues
-- **Discussions:** https://github.com/Community-of-Community/Community-of-Community/discussions
+- **Issues:** https://github.com/Community-of-Community/CoC/issues
+- **Discussions:** https://github.com/Community-of-Community/CoC/discussions
 
 ## Preview and deployment
 
